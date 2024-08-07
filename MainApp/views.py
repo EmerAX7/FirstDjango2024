@@ -19,6 +19,8 @@ items = [
    {"id": 8, "name": "Кепка" ,"quantity":124},
 ]
 
+ret_item_str = """<p><a href="/items">К списку товаров</a></p>"""
+
 def home(request):
     text = """
     <h1>"Изучаем django"</h1>
@@ -34,15 +36,24 @@ def about(request):
     return HttpResponse(text)
 
 def get_item(request, item_id):
-    for i in items:            
-        if i['id'] == item_id:
+    for item in items:            
+        if item['id'] == item_id:
             r = f"""
-            <b>Название:</b> {i['name']}
+            <b>Название:</b> {item['name']}
             <br>
-            <b>Количество:</b> {i['quantity']}
+            <b>Количество:</b> {item['quantity']}
+            {ret_item_str}
             """
             return HttpResponse(r)
-    return HttpResponseNotFound(f"Товар [{item_id}] не найден")
+    return HttpResponseNotFound(f"Товар [{item_id}] не найден{ret_item_str}")
 
 def item_null(request):
-    return HttpResponse("Укажите идентификатор")
+    # Особый обработчик, когда не указан идентификатор
+    return HttpResponseNotFound(f"""<p>Укажите идентификатор</p>{ret_item_str}""")
+
+def get_items(request):
+    text = "<h2>Список товаров:</h2><ol>"
+    for item in items:
+        text += f"""<li><a href="/item/{item['id']}">{item['name']}</li>"""
+    text += "</ol>"
+    return HttpResponse(text)

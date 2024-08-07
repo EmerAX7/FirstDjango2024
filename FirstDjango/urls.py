@@ -23,5 +23,7 @@ urlpatterns = [
     path('', views.home),
     path('about', views.about),
     path('item/<int:item_id>', views.get_item),
-    path('item', views.item_null),
+    path('item', views.item_null),  # Не указан идентификатор; ...
+    path('item/', views.item_null), # ... дублируем на случай "/"
+    path('items', views.get_items),
 ]
