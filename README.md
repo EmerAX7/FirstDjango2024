@@ -5,3 +5,11 @@
 2. `source django_venv/bin/activate`
 3. `pip install -r requirements.txt`
 4. `python manage.py runserver`
+
+
+# Для Visual Studio Code:
+Установить расширение "Django" (автор "Baptiste Darthenay")
+В settings прописать:
+"files.associations": {
+    "*.html": "django-html"
+}

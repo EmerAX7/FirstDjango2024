@@ -27,7 +27,13 @@ def home(request):
     <strong>Автор</strong>: <i>Плахута А.С.</i>
     """
     #text = f"{vars(request)}"
-    return HttpResponse(text)
+    #return HttpResponse(text)
+    #return render(request, "index.html")
+    context = {
+        "name": "Иванов Сидр Петрович",
+        "email": "isp@mail.ru",
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text = ""
