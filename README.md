@@ -7,9 +7,16 @@
 4. `python manage.py runserver`
 
 
-# Для Visual Studio Code:
-Установить расширение "Django" (автор "Baptiste Darthenay")
+## Для Visual Studio Code:
+Установить расширение "Django" (автор "Baptiste Darthenay").
+
 В settings прописать:
+```
+"emmet.includeLanguages": {
+        "django-html": "html"
+    },
 "files.associations": {
     "*.html": "django-html"
 }
+```
+

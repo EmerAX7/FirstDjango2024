@@ -22,13 +22,6 @@ items = [
 ret_item_str = """<p><a href="/items">К списку товаров</a></p>"""
 
 def home(request):
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Плахута А.С.</i>
-    """
-    #text = f"{vars(request)}"
-    #return HttpResponse(text)
-    #return render(request, "index.html")
     context = {
         "name": "Иванов Сидр Петрович",
         "email": "isp@mail.ru",
@@ -36,30 +29,32 @@ def home(request):
     return render(request, "index.html", context)
 
 def about(request):
-    text = ""
+    text = """
+    <a href="/">Главная</a> / 
+    <a href="/about">Об авторе</a> / 
+    <a href="/items">Товары</a>
+    <h2>Об авторе</h2>
+    """
     for k,v in author.items():
         text += f"{k}: <b>{v}</b><br>"
     return HttpResponse(text)
 
 def get_item(request, item_id):
+    context = {
+        "stx": -1, # товар не найден
+    }
     for item in items:            
         if item['id'] == item_id:
-            r = f"""
-            <b>Название:</b> {item['name']}
-            <br>
-            <b>Количество:</b> {item['quantity']}
-            {ret_item_str}
-            """
-            return HttpResponse(r)
-    return HttpResponseNotFound(f"Товар [{item_id}] не найден{ret_item_str}")
+            context['stx'] = 0
+            context['item'] = item
+    return render(request, "item.html", context)
 
 def item_null(request):
     # Особый обработчик, когда не указан идентификатор
     return HttpResponseNotFound(f"""<p>Укажите идентификатор</p>{ret_item_str}""")
 
 def get_items(request):
-    text = "<h2>Список товаров:</h2><ol>"
-    for item in items:
-        text += f"""<li><a href="/item/{item['id']}">{item['name']}</li>"""
-    text += "</ol>"
-    return HttpResponse(text)
+    context = {
+        "items": items
+    }
+    return render(request, "items.html", context)

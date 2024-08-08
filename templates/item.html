@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товар</title>
+</head>
+<body>
+    <a href="/">Главная</a> / 
+    <a href="/about">Об авторе</a> / 
+    <a href="/items">Товары</a>
+    {% if stx >= 0 %}
+    <h2>Информация о товаре</h2>
+    Название: <b>{{ item.name }}</b><br>
+    Количество: <b>
+        {% if item.quantity > 0 %} {{item.quantity}}
+        {% else %} товар не найден
+        {% endif %}</b>
+    {% else %}
+    <h2>товара с таким ID не существует</h2>
+    {% endif %}
+    <p><a href="/items">к списку товаров</a></o>
+</body>
+</html>
