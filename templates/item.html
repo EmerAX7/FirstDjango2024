@@ -13,6 +13,16 @@
         <div>Название: <b>{{ name }}</b></div>
         <div>Количество: <b>{{ count | default:"Товар не найден" }}</b></div>
         <div>Описание: <i>{{ descr }}</i></div>
+        <i>Цвета:</i>
+        {% if colors %}
+        <ul class="ul_no_mark">
+            {% for color in colors %}
+                <li><div class="color-box" style="background-color: {{ color.name }};"></div>{{ color.name }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            Цвета отсутствуют
+        {% endif %}
     {% else %}
         <h2>товара с таким ID не существует</h2>
     {% endif %}

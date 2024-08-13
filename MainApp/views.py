@@ -52,7 +52,11 @@ def get_item(request, item_id):
     context = {}
     try:
         it = Item.objects.get(id=item_id)
+        colors = []
+        if it.colors.exists():           # Если у товара есть хоть один цвет, то выводим его
+            colors = it.colors.all()  #
         context = model_to_dict(it)
+        context["colors"] = colors
     except ObjectDoesNotExist:
         context["id"] = -1 # товар не найден
     return render(request, "item.html", context)

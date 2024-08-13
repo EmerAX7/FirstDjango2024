@@ -1,0 +1,76 @@
+[
+{
+    "model": "MainApp.color",
+    "pk": 1,
+    "fields": {
+        "name": "red"
+    }
+},
+{
+    "model": "MainApp.color",
+    "pk": 2,
+    "fields": {
+        "name": "green"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 3,
+    "fields": {
+        "name": "Кроссовки",
+        "brand": "abibas",
+        "count": 10,
+        "descr": "здесь должно быть описание",
+        "colors": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 4,
+    "fields": {
+        "name": "Куртка кожаная",
+        "brand": "Puma",
+        "count": 2,
+        "descr": "здесь должно быть описание",
+        "colors": [
+            1
+        ]
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 5,
+    "fields": {
+        "name": "Pepsi 1 литр",
+        "brand": "Coca-cola",
+        "count": 12,
+        "descr": "здесь должно быть описание",
+        "colors": []
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 6,
+    "fields": {
+        "name": "Картофель фри",
+        "brand": "Вкусно и точка",
+        "count": 0,
+        "descr": "здесь должно быть описание",
+        "colors": []
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 7,
+    "fields": {
+        "name": "Кепка",
+        "brand": "Ноу Нэйм",
+        "count": 124,
+        "descr": "здесь должно быть описание",
+        "colors": []
+    }
+}
+]
