@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{#% load static %#}
+
+{% block title %}
+    {#{ block.super }#}
+    Об авторе
+{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+    <H1>Об авторе</H1>
+    {% for key, value in author.items %}
+        {{ key }}: <b>{{ value }}</b><br>
+    {% endfor %}
+{% endblock content %}

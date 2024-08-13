@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товар</title>
-</head>
-<body>
-    <a href="/">Главная</a> / 
-    <a href="/about">Об авторе</a> / 
-    <a href="/items">Товары</a>
-    {% if stx >= 0 %}
-    <h2>Информация о товаре</h2>
-    Название: <b>{{ item.name }}</b><br>
-    Количество: <b>
-        {% if item.quantity > 0 %} {{item.quantity}}
-        {% else %} товар не найден
-        {% endif %}</b>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {#{ block.super }#}
+    Информация о товаре
+{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
+    {% if id >= 0 %}
+        <h2>Информация о товаре</h2>
+        <div>Название: <b>{{ name }}</b></div>
+        <div>Количество: <b>{{ count | default:"Товар не найден" }}</b></div>
+        <div>Описание: <i>{{ descr }}</i></div>
     {% else %}
-    <h2>товара с таким ID не существует</h2>
+        <h2>товара с таким ID не существует</h2>
     {% endif %}
-    <p><a href="/items">к списку товаров</a></o>
-</body>
-</html>
+    <br>
+    <div><a href="{% url "items-list" %}">к списку товаров</a></div>
+{% endblock content %}

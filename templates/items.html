@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товары</title>
-</head>
-<body>
-    <a href="/">Главная</a> / 
-    <a href="/about">Об авторе</a> / 
-    <a href="/items">Товары</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {#{ block.super }#}
+    Список товаров
+{% endblock title %}
+
+{% block content %}
+    {{ block.super }}
     <h2>Список товаров:</h2>
-    <ol>
+    <div class="items">
         {% for item in items %}
-        <li><a href="/item/{{ item.id }}">{{ item.name }}</a></li>
+        <div class="item">
+            <a href="{% url "item-detail" item.id %}">
+                <p class="item_name">{{ item.name }}</p>
+                <p>Бренд: {{ item.brand }} </p>
+                <p>Описание товара:</p>
+                <p>{{ item.description | default:"-" }}</p>
+            </a>
+        </div>
         {% endfor %}
-    </ol>
-</body>
-</html>
+    </div>
+{% endblock content %}

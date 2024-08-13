@@ -16,14 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from MainApp import views
 
 urlpatterns = [
 #    path('admin/', admin.site.urls),
-    path('', views.home),
-    path('about', views.about),
-    path('item/<int:item_id>', views.get_item),
+    path('', views.home, name='home'),
+    path('about', views.about, name='about'),
+    path('item/<int:item_id>', views.get_item, name='item-detail'),
     path('item', views.item_null),  # Не указан идентификатор; ...
     path('item/', views.item_null), # ... дублируем на случай "/"
-    path('items', views.get_items),
-]
+    path('items', views.get_items, name='items-list'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

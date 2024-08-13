@@ -1,16 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/">Главная</a> / 
-    <a href="/about">Об авторе</a> / 
-    <a href="/items">Товары</a>
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    {{ block.super }}
+    <br/>
+    <img width="50px" , src="{% static "images/django.svg"%}", alt="Название картинки" />
     <H1>Привет!</H1>
     Меня зовут: <i>{{ name }}</i><br>
     Моя почта: <i>{{ email }}</i><br>
-</body>
-</html>
+{% endblock content %}
+

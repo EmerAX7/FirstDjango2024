@@ -13,6 +13,16 @@
 python manage.py shell_plus --ipython
 ```
 
+## Выгрузить данные из БД
+```
+python manage.py dumpdata MainApp --indent 4 > ./fixtures/item.json
+```
+
+## Загрузить данные в БД
+```
+python manage.py loaddata ./fixtures/item.json
+```
+
 ## Для Visual Studio Code:
 Установить расширение "Django" (автор "Baptiste Darthenay").
 
